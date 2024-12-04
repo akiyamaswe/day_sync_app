@@ -5,6 +5,8 @@ en:
         one: User  #g
         other: Users  #g
 
+      report: Report  #g
+
     attributes:
       user:
         address: Address  #g
@@ -17,6 +19,13 @@ en:
         reset_password_sent_at: Reset password sent at  #g
         reset_password_token: Reset password token  #g
         self_introduction: Self introduction  #g
+        reports: Reports  #g
+
+      report:
+        content: Content  #g
+        title: Title  #g
+        user: :activerecord.models.user  #g
+
   views:
     common:
       show: "Show this %{name}"
@@ -32,15 +41,18 @@ en:
       validation_error: "%{errors} prohibited this %{name} from being saved"
       title_show: "%{name} details"
       sign_out: "Sign out"
+
   controllers:
     common:
       notice_create: "%{name} was successfully created."
       notice_update: "%{name} was successfully updated."
       notice_destroy: "%{name} was successfully destroyed."
+
   layouts:
     menu:
       menu: Menu
       sign_in_as: "Sign-in as %{user}"
+
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:

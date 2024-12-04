@@ -4,6 +4,9 @@
     <li>
       <%= link_to User.model_name.human, users_path %>
     </li>
+    <li>
+      <%= link_to Report.model_name.human, reports_path %>
+    </li>
   </ul>
   <div class="title">
     <%= t('.sign_in_as', user: link_to(current_user_name(current_user), current_user)).html_safe %>

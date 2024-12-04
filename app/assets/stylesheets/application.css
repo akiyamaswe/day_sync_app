@@ -396,9 +396,9 @@ form > div textarea:focus {
 
 .account-actions input[type="submit"],
 .account-actions button,
-.account-delete-button button {  /* この行を追加 */
+.account-delete-button button {
   margin: 0;
-  width: auto;  /* この行を追加 */
+  width: auto;
   float: none;
 }
 
@@ -610,7 +610,7 @@ form > div textarea:focus {
   display: block;
   margin-bottom: 0.5rem;
 }
-/* コメントコンテナのスタイル */
+
 .comments-container {
   background: white;
   border-radius: 12px;
@@ -626,7 +626,7 @@ form > div textarea:focus {
   font-size: 1.1rem;
 }
 
-/* コメントリストのスタイル */
+
 .comments-container ul {
   list-style: none;
   padding: 0;
@@ -644,14 +644,14 @@ form > div textarea:focus {
   margin-bottom: 0;
 }
 
-/* コメント内容のスタイル */
+
 .comments-container .comment-content {
   margin-bottom: 0.5rem;
   color: #2d3748;
   line-height: 1.5;
 }
 
-/* コメントメタ情報のスタイル */
+
 .comments-container .comment-meta {
   display: flex;
   align-items: center;
@@ -670,7 +670,7 @@ form > div textarea:focus {
   color: #2c5282;
 }
 
-/* 削除ボタンのスタイル */
+
 .comment-delete-button {
   background-color: #ef4444;
   color: white;
@@ -686,7 +686,7 @@ form > div textarea:focus {
   background-color: #dc2626;
 }
 
-/* コメントフォームのスタイル */
+
 .comment-form {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
@@ -708,7 +708,7 @@ form > div textarea:focus {
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-/* コメントが無い場合のスタイル */
+
 .no-comments {
   color: #64748b;
   font-style: italic;
@@ -717,9 +717,9 @@ form > div textarea:focus {
 
 .comments-container {
   background: white;
-  border-radius: 16px;  /* show-itemと同じ角丸に */
-  padding: 2.5rem;      /* show-itemと同じパディングに */
+  border-radius: 16px;
+  padding: 2.5rem;
   margin: 2rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);  /* show-itemと同じシャドウに */
-  max-width: 800px;     /* show-itemと同じ最大幅に */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
 }

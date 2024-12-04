@@ -1,5 +1,7 @@
 class Report < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commentable, dependent: :destroy
+
   paginates_per 25
 
   def editable?(target_user)

@@ -85,7 +85,6 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 .page-nav a,
 .actions input[type="submit"],
 .button,
@@ -237,7 +236,9 @@ h1 {
   color: white;
 }
 
-.field {
+/* Updated styling for all form fields, including reports */
+.field,
+form > div {
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -245,23 +246,29 @@ h1 {
   gap: 0.5rem;
 }
 
-.field label {
+.field label,
+form > div label {
   display: block;
   font-weight: 500;
   margin-bottom: 0.25rem;
   color: #2d3748;
 }
 
-.field br {
+.field br,
+form > div br {
   display: none;
 }
 
 .field input[type="text"],
 .field input[type="email"],
 .field input[type="password"],
-.field textarea {
+.field textarea,
+form > div input[type="text"],
+form > div input[type="email"],
+form > div input[type="password"],
+form > div textarea {
   width: 100%;
-  max-width: 650px; 
+  max-width: 650px;
   padding: 0.75rem;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -270,13 +277,17 @@ h1 {
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+form > div input:focus,
+form > div textarea:focus {
   border-color: #4a90e2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-#notice, #alert, #error_explanation {
+#notice,
+#alert,
+#error_explanation {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -288,7 +299,8 @@ h1 {
   border: 1px solid #c6f6d5;
 }
 
-#alert, #error_explanation {
+#alert,
+#error_explanation {
   background-color: #fff5f5;
   color: #c53030;
   border: 1px solid #fed7d7;
@@ -375,15 +387,24 @@ h1 {
 
 .account-actions {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+  justify-content: flex-start;
 }
 
 .account-actions input[type="submit"],
-.account-actions button {
+.account-actions button,
+.account-delete-button button {  /* この行を追加 */
   margin: 0;
+  width: auto;  /* この行を追加 */
+  float: none;
+}
+
+.account-actions > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .show-item > div:first-child {
@@ -431,16 +452,16 @@ h1 {
   .index-item {
     padding: 1.5rem;
   }
-  
+
   .show-item {
     padding: 1.5rem;
     margin: 1rem 0;
   }
-  
+
   .show-item > div {
     padding: 0.8rem 0;
   }
-  
+
   h1 {
     font-size: 1.5rem;
     margin: 1.5rem 0;
@@ -507,12 +528,13 @@ h1 {
   .devise-links {
     flex-direction: column;
   }
-  
+
   .devise-links a {
     width: 100%;
     margin: 0;
   }
 }
+
 .field.remember-me {
   flex-direction: row;
   align-items: center;
@@ -534,50 +556,47 @@ h1 {
   width: 100%;
   padding-bottom: 3rem;
 }
+
 .pagination {
-  .page-item {
-    display: inline-block;
-    margin: 0 2px; 
-    
-    .page-link {
-      border-radius: 4px;
-      padding: 8px 12px;
-      color: #495057;
-      background: #fff;
-      border: 1px solid #dee2e6;
-      transition: all 0.2s ease;
-      
-      &:hover {
-        background: #e9ecef;
-        color: #0056b3;
-        text-decoration: none;
-      }
-    }
-    
-    &.active {
-      .page-link {
-        background: #007bff;
-        border-color: #007bff;
-        color: white;
-        
-        &:hover {
-          background: #0056b3;
-        }
-      }
-    }
-    
-    &.disabled {
-      .page-link {
-        background: #fff;
-        color: #6c757d;
-        border-color: #dee2e6;
-      }
-    }
-  }
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2px;
+}
+.pagination .page-item {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.pagination .page-item .page-link {
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #495057;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-item .page-link:hover {
+  background: #e9ecef;
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.pagination .page-item.active .page-link {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.pagination .page-item.active .page-link:hover {
+  background: #0056b3;
+}
+
+.pagination .page-item.disabled .page-link {
+  background: #fff;
+  color: #6c757d;
+  border-color: #dee2e6;
 }
 
 .pagination-container {

@@ -1,15 +1,536 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f7fa;
+}
+
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #2c3e50, #4a90e2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 60px;
+}
+
+.menu-container > .title {
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.menu-container ul {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu-container ul li {
+  position: relative;
+  margin: 0 5px;
+}
+
+.menu-container ul li a,
+.menu-container .title a,
+.menu-container a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.menu-container ul li a:hover,
+.menu-container .title a:hover,
+.menu-container a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container ul li a:active,
+.menu-container .title a:active,
+.menu-container a:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.page-nav a,
+.actions input[type="submit"],
+.button,
+.page-nav .button,
+input[type="submit"],
+button {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #2977fd;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+.page-nav a:hover,
+.actions input[type="submit"]:hover,
+.button:hover,
+input[type="submit"]:hover,
+button:hover {
+  background-color: #0051ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page-nav a:active,
+.actions input[type="submit"]:active,
+.button:active,
+input[type="submit"]:active,
+button:active {
+  transform: translateY(0);
+  background-color: #2c5282;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-nav a[href*="back"],
+.button-secondary {
+  background-color: #718096;
+  color: white;
+}
+
+.page-nav a[href*="back"]:hover,
+.button-secondary:hover {
+  background-color: #4a5568;
+}
+
+.button-danger,
+button[data-turbo-confirm] {
+  background-color: #7a7a7a;
+  color: white;
+}
+
+.button-danger:hover,
+button[data-turbo-confirm]:hover {
+  background-color: #c53030;
+}
+
+.index-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.index-item {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.index-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.index-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.index-item > div:last-of-type {
+  border-bottom: none;
+}
+
+.index-item > div::before {
+  content: attr(class);
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.index-item > div {
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+.index-item > div:empty::after {
+  content: "未設定";
+  color: #a0aec0;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.index-item > p {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.index-item a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.index-item a:hover {
+  color: #2c5282;
+}
+
+h1 {
+  color: #2d3748;
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.current-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.field {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #2d3748;
+}
+
+.field br {
+  display: none;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field textarea {
+  width: 100%;
+  max-width: 650px; 
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+#notice, #alert, #error_explanation {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+#notice {
+  background-color: #f0fff4;
+  color: #2f855a;
+  border: 1px solid #c6f6d5;
+}
+
+#alert, #error_explanation {
+  background-color: #fff5f5;
+  color: #c53030;
+  border: 1px solid #fed7d7;
+}
+
+#error_explanation h2 {
+  font-size: 1rem;
+  color: #c53030;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+#error_explanation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#error_explanation ul li {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+#error_explanation ul li:last-child {
+  margin-bottom: 0;
+}
+
+.field_with_errors input,
+.field_with_errors textarea {
+  border-color: #fc8181;
+  background-color: #fff5f5;
+}
+
+.field_with_errors label {
+  color: #c53030;
+}
+
+.show-item {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+  max-width: 800px;
+}
+
+.show-item > div {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.show-item > div:last-child {
+  border-bottom: none;
+}
+
+.show-item > div::before {
+  content: attr(class);
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.show-item > div {
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.show-item > div:empty::after {
+  content: "未設定";
+  color: #a0aec0;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.page-nav {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.account-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.account-actions input[type="submit"],
+.account-actions button {
+  margin: 0;
+}
+
+.show-item > div:first-child {
+  padding-top: 0;
+}
+
+.show-item > div:last-child {
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .menu-container ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .menu-container ul li a,
+  .menu-container .title a {
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .current-user {
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-container {
+    padding-top: 120px;
+  }
+
+  .index-items {
+    grid-template-columns: 1fr;
+  }
+
+  .index-item {
+    padding: 1.5rem;
+  }
+  
+  .show-item {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .show-item > div {
+    padding: 0.8rem 0;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .page-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .page-nav a {
+    width: 100%;
+    margin: 0;
+  }
+
+  .account-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .account-actions input[type="submit"],
+  .account-actions button {
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+}
+
+.devise-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.devise-links a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: #7a7a7a;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.devise-links a:hover {
+  background-color: #0051ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.devise-links a:active {
+  transform: translateY(0);
+  background-color: #2c5282;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .devise-links {
+    flex-direction: column;
+  }
+  
+  .devise-links a {
+    width: 100%;
+    margin: 0;
+  }
+}
+.field.remember-me {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field.remember-me input[type="checkbox"] {
+  margin: 0;
+}
+
+.field.remember-me label {
+  margin: 0;
+}
+
+#devise-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  padding-bottom: 3rem;
+}

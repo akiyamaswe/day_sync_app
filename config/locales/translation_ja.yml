@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー  #g
       report: 日報  #g
+      comment: コメント  #g
 
     attributes:
       user:
@@ -17,12 +18,19 @@ ja:
         reset_password_token: パスワードリセット用トークン  #g
         self_introduction: 自己紹介  #g
         reports: レポート  #g
+        comments: コメント  #g
 
       report:
         content: コンテンツ  #g
         title: タイトル  #g
         user: :activerecord.models.user  #g
         created_on: 作成日
+        comments: コメント  #g
+
+      comment:
+        commentable_type: コメント可能な型  #g
+        content: コンテンツ  #g
+        user: :activerecord.models.user  #g
 
   views:
     common:
@@ -67,9 +75,12 @@ ja:
       create: コメントする
       delete: 削除
       no_comments: コメントはまだありません
+      comment_placeholder: コメントを入力してください
 
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
       edit:
         title: "アカウント編集"
+
+  commentable: :activerecord.models.commentable  #g

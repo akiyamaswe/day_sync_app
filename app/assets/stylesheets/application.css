@@ -610,3 +610,116 @@ form > div textarea:focus {
   display: block;
   margin-bottom: 0.5rem;
 }
+/* コメントコンテナのスタイル */
+.comments-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.comments-container strong {
+  display: block;
+  margin-bottom: 1rem;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+/* コメントリストのスタイル */
+.comments-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comments-container li {
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  margin-bottom: 0.75rem;
+}
+
+.comments-container li:last-child {
+  margin-bottom: 0;
+}
+
+/* コメント内容のスタイル */
+.comments-container .comment-content {
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+  line-height: 1.5;
+}
+
+/* コメントメタ情報のスタイル */
+.comments-container .comment-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.comments-container .comment-meta a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.comments-container .comment-meta a:hover {
+  color: #2c5282;
+}
+
+/* 削除ボタンのスタイル */
+.comment-delete-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.comment-delete-button:hover {
+  background-color: #dc2626;
+}
+
+/* コメントフォームのスタイル */
+.comment-form {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.comment-form input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.comment-form input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* コメントが無い場合のスタイル */
+.no-comments {
+  color: #64748b;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+.comments-container {
+  background: white;
+  border-radius: 16px;  /* show-itemと同じ角丸に */
+  padding: 2.5rem;      /* show-itemと同じパディングに */
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);  /* show-itemと同じシャドウに */
+  max-width: 800px;     /* show-itemと同じ最大幅に */
+}

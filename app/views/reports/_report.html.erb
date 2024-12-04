@@ -5,8 +5,8 @@
   </p>
 
   <p>
-    <strong><%= Report.human_attribute_name(:content) %>:</strong>
-    <%= report.content %>
+  <strong class="content-label"><%= Report.human_attribute_name(:content) %>:</strong>
+    <%= format_content(report.content) %>
   </p>
 
   <p>

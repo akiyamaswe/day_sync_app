@@ -605,3 +605,8 @@ form > div textarea:focus {
   display: flex;
   justify-content: center;
 }
+
+.content-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}

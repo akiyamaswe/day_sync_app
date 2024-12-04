@@ -534,3 +534,55 @@ h1 {
   width: 100%;
   padding-bottom: 3rem;
 }
+.pagination {
+  .page-item {
+    display: inline-block;
+    margin: 0 2px; 
+    
+    .page-link {
+      border-radius: 4px;
+      padding: 8px 12px;
+      color: #495057;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: #e9ecef;
+        color: #0056b3;
+        text-decoration: none;
+      }
+    }
+    
+    &.active {
+      .page-link {
+        background: #007bff;
+        border-color: #007bff;
+        color: white;
+        
+        &:hover {
+          background: #0056b3;
+        }
+      }
+    }
+    
+    &.disabled {
+      .page-link {
+        background: #fff;
+        color: #6c757d;
+        border-color: #dee2e6;
+      }
+    }
+  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.pagination-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}

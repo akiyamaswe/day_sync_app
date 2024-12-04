@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   paginates_per 25
 end

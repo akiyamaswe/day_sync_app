@@ -6,6 +6,7 @@ en:
         other: Users  #g
 
       report: Report  #g
+      comment: Comment  #g
 
     attributes:
       user:
@@ -20,10 +21,18 @@ en:
         reset_password_token: Reset password token  #g
         self_introduction: Self introduction  #g
         reports: Reports  #g
+        comments: Comments  #g
 
       report:
         content: Content  #g
         title: Title  #g
+        user: :activerecord.models.user  #g
+        created_on: Created on
+        comments: Comments  #g
+
+      comment:
+        commentable_type: Commentable type  #g
+        content: Content  #g
         user: :activerecord.models.user  #g
 
   views:
@@ -53,8 +62,17 @@ en:
       menu: Menu
       sign_in_as: "Sign-in as %{user}"
 
+  shared:
+    comments:
+      create: "Comment"
+      delete: "Delete"
+      no_comments: "No comments yet"
+      comment_placeholder: "Enter your comment"
+
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
       edit:
         title: "Edit account"
+
+  commentable: :activerecord.models.commentable  #g

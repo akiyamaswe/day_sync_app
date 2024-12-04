@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'users#index'
   resources :users, only: %i(index show)
-  
+  resources :reports do
+    scope module: :reports do
+      resources :comments, only: :create
+    end
+  end
+  resources :comments, only: :destroy
   resources :reports
 end

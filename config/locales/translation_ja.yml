@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー  #g
+      report: 日報  #g
 
     attributes:
       user:
@@ -15,6 +16,14 @@ ja:
         reset_password_sent_at: パスワードリセット送信時刻  #g
         reset_password_token: パスワードリセット用トークン  #g
         self_introduction: 自己紹介  #g
+        reports: レポート  #g
+
+      report:
+        content: コンテンツ  #g
+        title: タイトル  #g
+        user: :activerecord.models.user  #g
+        created_on: 作成日
+
   views:
     common:
       show: "この%{name}を表示"
@@ -30,29 +39,35 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+
     pagination:
       first: '« 最初'
       last: '最後 »'
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+
     mention:
       mentioned: "この%{name}は以下の%{name}からリンクされています。"
       failure: "メンションを保存出来ませんでした。言及できないレポートをメンションしている可能性があります。"
+
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+
   layouts:
     menu:
       menu: メニュー
       sign_in_as: "%{user} としてログイン中"
+
   shared:
     comments:
       create: コメントする
       delete: 削除
       no_comments: コメントはまだありません
+
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:

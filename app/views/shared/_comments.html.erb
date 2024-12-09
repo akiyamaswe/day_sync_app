@@ -11,8 +11,8 @@
             <%= link_to current_user_name(comment.user), comment.user %>
             <span><%= l comment.created_at, format: :short %></span>
             <% if comment.user == current_user %>
-              <%= button_to t('.delete'), [comment], 
-                  method: :delete, 
+              <%= button_to t('.delete'), [comment],
+                  method: :delete,
                   class: 'comment-delete-button',
                   data: { turbo_confirm: t('views.common.delete_confirm') } %>
             <% end %>
@@ -25,12 +25,12 @@
       <%= t('.no_comments') %>
     </div>
   <% end %>
-  
-  <%= form_with model: [commentable, commentable.comments.new], 
-      local: true, 
+
+  <%= form_with model: [commentable, commentable.comments.new],
+      local: true,
       class: 'comment-form' do |f| %>
-    <%= f.text_field :content, 
-        required: true, 
+    <%= f.text_field :content,
+        required: true,
         placeholder: t('.comment_placeholder') %>
     <%= f.submit t('.create'), class: 'button' %>
   <% end %>

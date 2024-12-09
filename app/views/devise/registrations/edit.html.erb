@@ -18,7 +18,7 @@
     <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
-      
+
       <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %>
   </div>
@@ -35,8 +35,7 @@
 
   <div class="account-actions">
     <%= f.submit t('.update') %>
-    <div class="account-delete-button"v><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
-
+    <div class="account-delete-button"><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
   </div>
 <% end %>
 

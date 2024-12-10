@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_04_085438) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_09_023616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_085438) do
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "mentions", force: :cascade do |t|
+    t.bigint "mentioning_report_id", null: false
+    t.bigint "mentioned_report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentioning_report_id", "mentioned_report_id"], name: "index_mentions_on_mentioning_report_id_and_mentioned_report_id", unique: true
   end
 
   create_table "reports", force: :cascade do |t|
@@ -52,5 +60,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_085438) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "mentions", "reports", column: "mentioned_report_id"
+  add_foreign_key "mentions", "reports", column: "mentioning_report_id"
   add_foreign_key "reports", "users"
 end

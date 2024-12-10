@@ -4,7 +4,7 @@ ja:
       user: ユーザー  #g
       report: 日報  #g
       comment: コメント  #g
-
+      mention: 参照
     attributes:
       user:
         address: 住所  #g
@@ -44,7 +44,7 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       error: エラー
-      validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+      validation_error: "%{errors}があるため、この%{name}は保存できませんでした。"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
 
@@ -56,8 +56,10 @@ ja:
       truncate: '…'
 
     mention:
-      mentioned: "この%{name}は以下の%{name}からリンクされています。"
-      failure: "メンションを保存出来ませんでした。言及できないレポートをメンションしている可能性があります。"
+      mentioned: "この%{name}は以下の%{name}から参照されています。"
+      failure: "メンションの保存に失敗しました。無効なレポートID、または重複したメンションがないかご確認ください。"
+      no_mentions: "メンションはまだありません"
+      not_found: "申し訳ありません。お探しのレポートは削除されたか存在しません。"
 
   controllers:
     common:

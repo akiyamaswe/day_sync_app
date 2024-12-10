@@ -1,5 +1,13 @@
 en:
   activerecord:
+    errors:
+      models:
+        mention:
+          attributes:
+            mentioning_report_id:
+              duplicate: "%{model} has already been registered"
+          self_reference: "Cannot %{model} itself"
+          not_found: "%{model} with ID: %{id} does not exist"
     attributes:
       user:
         confirmation_sent_at: Confirmation sent at

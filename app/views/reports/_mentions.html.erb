@@ -1,0 +1,16 @@
+<div class="mentions-container">
+  <h3><%= t('views.mention.mentioned', name: Report.model_name.human) %></h3>
+  <% if (mentioned_reports = report.mentioned_reports.presence) %>
+    <ul>
+      <% mentioned_reports.each do |mentioned_report| %>
+        <li>
+          <%= link_to mentioned_report.title, mentioned_report %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="no-mentions">
+      <%= t('views.mention.no_mentions') %>
+    </div>
+  <% end %>
+</div>

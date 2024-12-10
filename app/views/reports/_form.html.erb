@@ -1,6 +1,5 @@
 <%= form_with(model: report) do |form| %>
-  <%= render 'shared/validation_errors', resource: report %>
-
+  <%= render 'shared/validation_errors', report: report %>
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>

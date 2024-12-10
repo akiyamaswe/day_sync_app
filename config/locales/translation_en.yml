@@ -7,6 +7,7 @@ en:
 
       report: Report  #g
       comment: Comment  #g
+      mention: Mention
 
     attributes:
       user:
@@ -50,6 +51,18 @@ en:
       validation_error: "%{errors} prohibited this %{name} from being saved"
       title_show: "%{name} details"
       sign_out: "Sign out"
+
+    pagination:
+      first: '« First'
+      last: 'Last »'
+      previous: '‹ Prev'
+      next: 'Next ›'
+      truncate: '…'
+
+    mention:
+      mentioned: "This %{name} is linked from the following %{name}."
+      failure: "Failed to save mentions. Please check for invalid report IDs or duplicate mentions."
+      not_found: "Sorry. The report you're looking for has been deleted or does not exist."
 
   controllers:
     common:

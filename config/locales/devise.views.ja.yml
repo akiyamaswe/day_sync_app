@@ -1,5 +1,13 @@
 ja:
   activerecord:
+    errors:
+      models:
+        mention:
+          attributes:
+            mentioning_report_id:
+              duplicate: "%{model}は既に登録されています。"
+          self_reference: "自分自身を%{model}することはできません。"
+          not_found: "ID: %{id}の%{model}は存在しません。"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻

@@ -723,3 +723,104 @@ form > div textarea:focus {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   max-width: 800px;
 }
+
+.alert-danger {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background-color: #fff5f5;
+  color: #c53030;
+  border: 1px solid #fed7d7;
+}
+
+.alert-danger h2 {
+  font-size: 1rem;
+  color: #c53030;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.error-messages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.error-message {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #c53030;
+}
+
+.error-message:last-child {
+  margin-bottom: 0;
+}
+
+.mentions-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+}
+
+.mentions-container h3 {
+  color: #2d3748;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.mentions-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mentions-container li {
+  margin-bottom: 0.75rem;
+}
+
+.mentions-container li:last-child {
+  margin-bottom: 0;
+}
+
+.mentions-container a {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mentions-container a:hover {
+  background: #f1f5f9;
+  color: #2c5282;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .mentions-container {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .mentions-container h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mentions-container a {
+    padding: 0.75rem;
+  }
+}
+
+.mentions-container .no-mentions {
+  font-style: italic;     /* イタリック体に */
+  color: #64748b;        /* グレー色に */
+}

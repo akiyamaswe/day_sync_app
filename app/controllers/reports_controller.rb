@@ -2,6 +2,9 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :build_report, only: %i[new create]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
@@ -9,27 +12,25 @@ class ReportsController < ApplicationController
 
   def show; end
 
-  def new
-    @report = current_user.reports.new
-  end
+  def new; end
 
   def edit; end
 
   def create
-    @report = current_user.reports.new(report_params)
-
-    if @report.save
+    if @report.save_with_mentions
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
-      render :new, status: :unprocessable_entity
+      handle_save_error(:new)
     end
   end
 
   def update
-    if @report.update(report_params)
+    @report.assign_attributes(report_params)
+
+    if @report.save_with_mentions
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      render :edit, status: :unprocessable_entity
+      handle_save_error(:edit)
     end
   end
 
@@ -40,8 +41,26 @@ class ReportsController < ApplicationController
 
   private
 
+  def handle_save_error(template)
+    flash.now[:alert]
+    render template
+  end
+
+  def handle_record_not_found
+    flash[:alert] = t('views.mention.not_found')
+    redirect_back(fallback_location: reports_path)
+  end
+
+  def build_report
+    @report = current_user.reports.new(params[:report].present? ? report_params : {})
+  end
+
   def set_report
-    @report = current_user.reports.find(params[:id])
+    @report = if action_name == 'show'
+                Report.find_by!(id: params[:id])
+              else
+                current_user.reports.find(params[:id])
+              end
   end
 
   def report_params

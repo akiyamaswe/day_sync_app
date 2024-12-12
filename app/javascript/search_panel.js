@@ -7,6 +7,8 @@ document.addEventListener("turbo:load", function () {
     const toggleButton = container.querySelector(".search-panel-toggle");
     const searchPanel = container.querySelector(".search-panel");
     const toggleIcon = container.querySelector(".toggle-icon");
+    const clearButton = container.querySelector(".search-clear");
+    const searchForm = container.querySelector("form");
 
     if (toggleButton && searchPanel) {
       searchPanel.style.display = "none";
@@ -21,6 +23,26 @@ document.addEventListener("turbo:load", function () {
           toggleIcon.textContent = "▶";
           toggleButton.classList.remove("active");
         }
+      });
+    }
+
+    if (clearButton && searchForm) {
+      clearButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const inputs = searchForm.querySelectorAll(
+          "input[type='text'], input[type='date'], select"
+        );
+
+        inputs.forEach((input) => {
+          if (input.tagName === "SELECT") {
+            input.selectedIndex = 0;
+          } else {
+            input.value = "";
+          }
+        });
+
+        searchForm.requestSubmit();
       });
     }
   });

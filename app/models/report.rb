@@ -36,7 +36,7 @@ class Report < ApplicationRecord
     %w[user]
   end
 
-  REPORT_ID_REGEX = %r{http://localhost:3000/reports/(\d+)}
+  REPORT_ID_REGEX = %r{(?:http://|https://)(?:[^/]+)/reports/(\d+)}
 
   def editable?(target_user)
     user == target_user

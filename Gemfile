@@ -81,3 +81,5 @@ gem 'devise-i18n'
 gem 'kaminari'
 gem 'ransack'
 gem 'rinku'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

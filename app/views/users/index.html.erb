@@ -1,47 +1,60 @@
 <h1><%= t('views.common.title_index', name: i18n_pluralize(User.model_name.human)) %></h1>
 
-<div class="search-compact">
-  <%= search_form_for @q do |f| %>
-    <div class="search-grid">
-      <div class="search-top-fields">
-        <div class="search-field">
-          <%= f.label :id_eq, User.model_name.human %>
-          <%= f.collection_select :id_eq,
-              User.all,
-              :id,
-              ->(user) { user.name.presence || user.email },
-              { include_blank: t('views.common.please_select') }
-          %>
-        </div>
+<div class="search-panel-container">
+  <button type="button" class="search-panel-toggle">
+    <span class="toggle-icon">▶</span>
+    <%= t('views.common.detailed_search') %>
+  </button>
 
-        <div class="search-field">
-          <%= f.label :address_cont, t('activerecord.attributes.user.address') %>
-          <%= f.text_field :address_cont %>
-        </div>
+  <div class="search-panel">
+    <div class="search-compact">
+      <%= search_form_for @q, html: { data: { turbo_frame: "users-results" } } do |f| %>
+        <div class="search-grid">
+          <div class="search-top-fields">
+            <div class="search-field">
+              <%= f.label :id_eq, User.model_name.human %>
+              <%= f.collection_select :id_eq,
+                  User.all,
+                  :id,
+                  ->(user) { user.name.presence || user.email },
+                  { include_blank: t('views.common.please_select') }
+              %>
+            </div>
 
-        <div class="search-field">
-          <%= f.label :self_introduction_cont, t('activerecord.attributes.user.self_introduction') %>
-          <%= f.text_field :self_introduction_cont %>
-        </div>
-      </div>
+            <div class="search-field">
+              <%= f.label :address_cont, t('activerecord.attributes.user.address') %>
+              <%= f.text_field :address_cont %>
+            </div>
 
-      <div class="search-actions">
-        <%= f.submit t('views.common.search'), class: 'search-button search-submit' %>
-        <%= link_to t('views.common.clear'), users_path, class: 'search-button search-clear' %>
-      </div>
+            <div class="search-field">
+              <%= f.label :self_introduction_cont, t('activerecord.attributes.user.self_introduction') %>
+              <%= f.text_field :self_introduction_cont %>
+            </div>
+          </div>
+
+          <div class="search-actions">
+            <%= f.submit t('views.common.search'), class: 'search-button search-submit' %>
+            <%= link_to t('views.common.clear'), users_path, 
+                class: 'search-button search-clear',
+                data: { turbo_frame: "users-results" } %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
-<div id="users" class="index-items">
-  <% @users.each do |user| %>
-    <div class="index-item">
-      <%= render user %>
-      <p>
-        <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
-      </p>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag "users-results" do %>
+  <div id="users" class="index-items">
+    <% @users.each do |user| %>
+      <div class="index-item">
+        <%= render user %>
+        <p>
+          <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 
-<%= paginate @users %>
+  <%= paginate @users %>
+<% end %>

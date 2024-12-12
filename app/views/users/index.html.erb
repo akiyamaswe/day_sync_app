@@ -50,7 +50,9 @@
       <div class="index-item">
         <%= render user %>
         <p>
-          <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
+          <%= link_to t('views.common.show', name: User.model_name.human.downcase), 
+          user,
+          data: { turbo_frame: "_top" } %>
         </p>
       </div>
     <% end %>

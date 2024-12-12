@@ -52,6 +52,7 @@ ja:
       please_select: "選択してください"
       date_range_start: "開始日"
       date_range_end: "終了日"
+      detailed_search: "詳細検索"
 
     pagination:
       first: '« 最初'

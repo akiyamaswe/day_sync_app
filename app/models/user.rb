@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   paginates_per 25
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id name email address self_introduction]
+  end
 end

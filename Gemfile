@@ -79,4 +79,5 @@ end
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'ransack'
 gem 'rinku'

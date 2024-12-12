@@ -1,0 +1,33 @@
+.search-panel-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2977fd;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.search-panel-toggle:hover {
+  background-color: #0051ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-panel-toggle.active {
+  background-color: #0051ff;
+}
+
+.search-panel-container {
+  margin-bottom: 2rem;
+}
+
+#search-panel {
+  transition: all 0.3s ease;
+}

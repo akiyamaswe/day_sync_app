@@ -7,7 +7,8 @@ class ReportsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
-    @reports = Report.includes(:user).order(id: :desc).page(params[:page])
+    @q = Report.includes(:user).ransack(params[:q])
+    @reports = @q.result(distinct: true).order(id: :desc).page(params[:page])
   end
 
   def show; end

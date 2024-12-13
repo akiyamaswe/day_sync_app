@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   paginates_per 25
 
-  def self.ransackable_attributes
+  def self.ransackable_attributes(*)
     %w[id name email address self_introduction]
   end
 end

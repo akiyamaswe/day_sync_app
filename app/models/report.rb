@@ -28,11 +28,11 @@ class Report < ApplicationRecord
 
   attr_accessor :mention_errors
 
-  def self.ransackable_attributes
+  def self.ransackable_attributes(*)
     %w[title content created_at user_id]
   end
 
-  def self.ransackable_associations
+  def self.ransackable_associations(*)
     %w[user]
   end
 

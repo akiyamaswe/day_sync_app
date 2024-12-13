@@ -9,8 +9,7 @@
                 User.all,
                 :id,
                 ->(user) { user.name.presence || user.email },
-                { include_blank: t('views.common.please_select') }
-            %>
+                { include_blank: t('views.common.please_select') } %>
           </div>
 
           <div class="search-field">
@@ -38,7 +37,7 @@
 
         <div class="search-actions">
           <%= f.submit t('views.common.search'), class: 'search-button search-submit' %>
-          <%= link_to t('views.common.clear'), reports_path, 
+          <%= link_to t('views.common.clear'), reports_path,
               class: 'search-button search-clear',
               data: { turbo_frame: "reports-results" } %>
         </div>

@@ -15,7 +15,7 @@
       <div class="index-item">
         <%= render report %>
         <p>
-          <%= link_to t('views.common.show', name: Report.model_name.human.downcase), 
+          <%= link_to t('views.common.show', name: Report.model_name.human.downcase),
           report,
           data: { turbo_frame: "_top" } %>
         </p>

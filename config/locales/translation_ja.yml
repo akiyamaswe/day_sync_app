@@ -47,6 +47,12 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした。"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      search: "検索"
+      clear: "クリア"
+      please_select: "選択してください"
+      date_range_start: "開始日"
+      date_range_end: "終了日"
+      detailed_search: "詳細検索"
 
     pagination:
       first: '« 最初'

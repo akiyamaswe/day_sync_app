@@ -28,7 +28,15 @@ class Report < ApplicationRecord
 
   attr_accessor :mention_errors
 
-  REPORT_ID_REGEX = %r{http://localhost:3000/reports/(\d+)}
+  def self.ransackable_attributes
+    %w[title content created_at user_id]
+  end
+
+  def self.ransackable_associations
+    %w[user]
+  end
+
+  REPORT_ID_REGEX = %r{(?:http://|https://)(?:[^/]+)/reports/(\d+)}
 
   def editable?(target_user)
     user == target_user

@@ -60,6 +60,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
+  gem 'dockerfile-rails', '>= 1.6'
   gem 'erb_lint', require: false
   gem 'i18n_generators'
   gem 'letter_opener_web'
@@ -79,4 +80,5 @@ end
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'ransack'
 gem 'rinku'

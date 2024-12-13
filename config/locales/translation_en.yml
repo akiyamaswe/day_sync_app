@@ -51,6 +51,11 @@ en:
       validation_error: "%{errors} prohibited this %{name} from being saved"
       title_show: "%{name} details"
       sign_out: "Sign out"
+      search: "Search"
+      clear: "Clear"
+      please_select: "Please select"
+      date_range_start: "Start Date"
+      date_range_end: "End Date"
 
     pagination:
       first: '« First'

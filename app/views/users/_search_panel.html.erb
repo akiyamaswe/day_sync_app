@@ -1,0 +1,36 @@
+<div class="search-panel">
+  <div class="search-compact">
+    <%= search_form_for @q, html: { data: { turbo_frame: "users-results" } } do |f| %>
+      <div class="search-grid">
+        <div class="search-top-fields">
+          <div class="search-field">
+            <%= f.label :id_eq, User.model_name.human %>
+            <%= f.collection_select :id_eq,
+                User.all,
+                :id,
+                ->(user) { user.name.presence || user.email },
+                { include_blank: t('views.common.please_select') }
+            %>
+          </div>
+
+          <div class="search-field">
+            <%= f.label :address_cont, t('activerecord.attributes.user.address') %>
+            <%= f.text_field :address_cont %>
+          </div>
+
+          <div class="search-field">
+            <%= f.label :self_introduction_cont, t('activerecord.attributes.user.self_introduction') %>
+            <%= f.text_field :self_introduction_cont %>
+          </div>
+        </div>
+
+        <div class="search-actions">
+          <%= f.submit t('views.common.search'), class: 'search-button search-submit' %>
+          <%= link_to t('views.common.clear'), users_path, 
+              class: 'search-button search-clear',
+              data: { turbo_frame: "users-results" } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,8 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :build_report, only: %i[new create]
-
+  before_action :authenticate_user!
+  
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index

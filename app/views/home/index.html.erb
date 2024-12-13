@@ -1,0 +1,13 @@
+<div id="video-container" class="video-container">
+  <video id="background-video" class="background-video" autoplay loop muted playsinline>
+    <source src="<%= video_path('background-video.mp4') %>" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="content-overlay">
+    <h1><%= t('views.common.welcome_to') %> <span class="gradient-text">DaySync</span></h1>
+    <p><%= t('views.common.tagline') %></p>
+    <div class="button-container">
+      <%= link_to t("devise.sessions.new.sign_in"), new_user_session_path, class: "button primary" %>
+      <%= link_to t("devise.registrations.new.sign_up"), new_user_registration_path, class: "button primary" %>
+    </div>
+</div>

@@ -11,9 +11,8 @@
   </head>
 
   <body class="<%= params[:action] %>">
-    <div class="layout-wrapper bg-gradient-to-br from-custom-start to-custom-end">
-      <div class="side-background bg-gradient-to-br from-custom-start to-custom-end"></div>
-      <div class="main-container p-6">
+    <div class="layout-wrapper min-h-screen bg-gradient-to-br from-custom-start to-custom-end">
+      <div class="main-container p-6 pt-20">
         <% if user_signed_in? && !current_page?(root_path) %>
           <%= render 'layouts/header' %>
           <%= render 'layouts/side_menu' %>
@@ -24,11 +23,10 @@
         <% if alert.present? %>
           <p id="alert" class="mb-4 text-gray-800"><%= alert %></p>
         <% end %>
-        <div class="text-gray-800">
+        <div class="text-gray-800 max-w-7xl mx-auto">
           <%= yield %>
         </div>
       </div>
-      <div class="side-background bg-gradient-to-br from-custom-start to-custom-end"></div>
     </div>
   </body>
 </html>

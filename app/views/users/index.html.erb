@@ -3,7 +3,7 @@
 </h1>
 
 <div class="search-panel-container mb-8">
-  <button type="button" class="search-panel-toggle flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 mb-4">
+  <button type="button" class="search-panel-toggle flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm mb-4">
     <span class="toggle-icon transition-transform duration-200">▶</span>
     <%= t('views.common.detailed_search') %>
   </button>
@@ -11,8 +11,8 @@
 </div>
 
 <%= turbo_frame_tag "users-results" do %>
-  <div class="max-w-7xl mx-auto">
-    <div id="users" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">    <% @users.each do |user| %>
+  <div id="users" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @users.each do |user| %>
       <div class="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 transform-gpu hover:-translate-y-1 hover:scale-[1.01] hover:shadow-md min-h-[400px]">
         <%= render partial: 'user', locals: { user: user } %>
         <div class="absolute bottom-0 right-0 left-0 p-6 text-right border-t border-gray-100 bg-white rounded-b-2xl">
@@ -23,7 +23,6 @@
         </div>
       </div>
     <% end %>
-    </div>
   </div>
 
   <div class="mt-8">

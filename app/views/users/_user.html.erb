@@ -1,31 +1,55 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong><%= User.human_attribute_name(:email) %>:</strong>
-    <%= user.email %>
-  </p>
+<div id="<%= dom_id user %>" class="space-y-4">
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:email) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= user.email %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= User.human_attribute_name(:name) %>:</strong>
-    <%= user.name %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:name) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= user.name %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= User.human_attribute_name(:phone_number) %>:</strong>
-    <%= user.phone_number %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:phone_number) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= user.phone_number %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
-    <%= user.postal_code %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:postal_code) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= user.postal_code %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= User.human_attribute_name(:address) %>:</strong>
-    <%= user.address %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:address) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= user.address %>
+    </span>
+  </div>
 
-  <p>
-  <strong class="content-label"><%= User.human_attribute_name(:self_introduction) %>:</strong>
-    <%= format_content(user.self_introduction) %>
-  </p>
+  <div class="flex flex-col gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= User.human_attribute_name(:self_introduction) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= format_content(user.self_introduction) %>
+    </span>
+  </div>
 </div>

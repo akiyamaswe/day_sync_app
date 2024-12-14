@@ -83,4 +83,4 @@ gem 'kaminari'
 gem 'ransack'
 gem 'rinku'
 
-gem "tailwindcss-rails", "~> 3.0"
+gem 'tailwindcss-rails', '~> 3.0'

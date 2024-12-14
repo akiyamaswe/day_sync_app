@@ -1,12 +1,25 @@
-<h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
+<!-- showページのメインコンテナ -->
+<div class="max-w-3xl mx-auto">
+  <!-- ページタイトル -->
+  <h1 class="text-3xl font-bold mb-8">
+    <%= t('views.common.title_show', name: User.model_name.human) %>
+  </h1>
 
-<div class="show-item">
-  <%= render @user %>
+  <!-- ユーザー詳細カード -->
+  <div class="bg-white rounded-2xl shadow-sm p-6">
+    <%= render partial: 'user', locals: { user: @user } %>
+  </div>
+
+  <!-- ナビゲーションボタン -->
+  <nav class="flex flex-col md:flex-row gap-4 justify-end mt-8">
+    <% if current_user == @user %>
+      <%= link_to t('views.common.edit', name: User.model_name.human.downcase),
+          edit_user_registration_path,
+          class: "w-full md:w-auto px-6 py-2 bg-blue-600 text-white text-center rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
+    <% end %>
+  
+    <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human.downcase)),
+        users_path,
+        class: "w-full md:w-auto px-6 py-2 bg-blue-600 text-white text-center rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
+  </nav>
 </div>
-
-<nav class="page-nav">
-  <% if current_user == @user %>
-    <%= link_to t('views.common.edit', name: User.model_name.human.downcase), edit_user_registration_path %>
-  <% end %>
-  <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human.downcase)), users_path %>
-</nav>

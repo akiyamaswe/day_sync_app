@@ -6,27 +6,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  
   <body class="<%= params[:action] %>">
-    <div class="layout-wrapper">
-      <div class="side-background"></div>
-      <div class="main-container">
+    <div class="layout-wrapper bg-gradient-to-br from-custom-start to-custom-end">
+      <div class="side-background bg-gradient-to-br from-custom-start to-custom-end"></div>
+      <div class="main-container p-6">
         <% if user_signed_in? && !current_page?(root_path) %>
+          <%= render 'layouts/header' %>
           <%= render 'layouts/side_menu' %>
         <% end %>
         <% if notice.present? %>
-          <p id="notice"><%= notice %></p>
+          <p id="notice" class="mb-4 text-gray-800"><%= notice %></p>
         <% end %>
         <% if alert.present? %>
-          <p id="alert"><%= alert %></p>
+          <p id="alert" class="mb-4 text-gray-800"><%= alert %></p>
         <% end %>
-        <%= yield %>
+        <div class="text-gray-800">
+          <%= yield %>
+        </div>
       </div>
-      <div class="side-background"></div>
+      <div class="side-background bg-gradient-to-br from-custom-start to-custom-end"></div>
     </div>
   </body>
 </html>

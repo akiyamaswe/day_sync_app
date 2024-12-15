@@ -16,16 +16,22 @@
         <% unless current_page?(root_path) %>
           <%= render 'layouts/header' %>
         <% end %>
-      
+
         <% if user_signed_in? %>
           <%= render 'layouts/side_menu' %>
         <% end %>
-        <% if notice.present? %>
-          <p id="notice" class="mb-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700"><%= notice %></p>
-        <% end %>
-        <% if alert.present? %>
-          <p id="alert" class="mb-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-600"><%= alert %></p>
-        <% end %>
+
+        <div class="max-w-7xl mx-auto">
+          <%= render "devise/shared/error_messages", resource: local_assigns[:resource] if local_assigns[:resource]&.errors&.any? %>
+
+          <% if notice.present? %>
+            <p id="notice" class="mb-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700"><%= notice %></p>
+          <% end %>
+          <% if alert.present? %>
+            <p id="alert" class="mb-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-600"><%= alert %></p>
+          <% end %>
+        </div>
+
         <div class="text-gray-800 max-w-7xl mx-auto">
           <%= yield %>
         </div>

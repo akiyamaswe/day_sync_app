@@ -1,21 +1,37 @@
-<div id="<%= dom_id report %>">
-  <p>
-    <strong><%= Report.human_attribute_name(:user) %>:</strong>
-    <%= link_to current_user_name(report.user), report.user, data: { turbo_frame: "_top" } %>
-  </p>
+<div id="<%= dom_id report %>" class="space-y-4">
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= Report.human_attribute_name(:user) %>:
+    </span>
+    <span class="text-blue-600 hover:text-blue-800">
+      <%= link_to current_user_name(report.user), report.user, data: { turbo_frame: "_top" } %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= Report.human_attribute_name(:created_on) %>:</strong>
-    <%= l report.created_on %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= Report.human_attribute_name(:created_on) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= l report.created_on %>
+    </span>
+  </div>
 
-  <p>
-    <strong><%= Report.human_attribute_name(:title) %>:</strong>
-    <%= report.title %>
-  </p>
+  <div class="flex items-center gap-2">
+    <span class="text-gray-700 font-bold">
+      <%= Report.human_attribute_name(:title) %>:
+    </span>
+    <span class="text-gray-800">
+      <%= report.title %>
+    </span>
+  </div>
 
-  <p>
-    <strong class="content-label"><%= Report.human_attribute_name(:content) %>:</strong>
-    <%= raw Rinku.auto_link(h(format_content(report.content)), :all, 'data-turbo-frame="_top"', nil, Rinku::AUTOLINK_SHORT_DOMAINS) %>
-  </p>
+  <div class="flex flex-col gap-2">
+    <span class="text-gray-700 font-bold content-label">
+      <%= Report.human_attribute_name(:content) %>:
+    </span>
+    <span class="text-gray-800 whitespace-pre-wrap">
+      <%= raw Rinku.auto_link(h(format_content(report.content)), :all, 'class="text-blue-600 hover:text-blue-800" data-turbo-frame="_top"', nil, Rinku::AUTOLINK_SHORT_DOMAINS) %>
+    </span>
+  </div>
 </div>

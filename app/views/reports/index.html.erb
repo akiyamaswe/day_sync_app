@@ -1,8 +1,10 @@
-<h1><%= t('views.common.title_index', name: i18n_pluralize(Report.model_name.human)) %></h1>
+<h1 class="text-3xl font-bold mb-4">
+  <%= t('views.common.title_index', name: i18n_pluralize(Report.model_name.human)) %>
+</h1>
 
-<div class="search-panel-container">
-  <button type="button" class="search-panel-toggle">
-    <span class="toggle-icon">▶</span>
+<div class="search-panel-container mb-8">
+  <button type="button" class="search-panel-toggle flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm mb-4">
+    <span class="toggle-icon transition-transform duration-200">▶</span>
     <%= t('views.common.detailed_search') %>
   </button>
 
@@ -10,22 +12,27 @@
 </div>
 
 <%= turbo_frame_tag "reports-results" do %>
-  <div id="reports" class="index-items">
+  <div id="reports" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @reports.each do |report| %>
-      <div class="index-item">
+      <div class="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 transform-gpu hover:-translate-y-1 hover:scale-[1.01] hover:shadow-md min-h-[400px]">
         <%= render report %>
-        <p>
+        <div class="absolute bottom-0 right-0 left-0 p-6 text-right border-t border-gray-100 bg-white rounded-b-2xl">
           <%= link_to t('views.common.show', name: Report.model_name.human.downcase),
-          report,
-          data: { turbo_frame: "_top" } %>
-        </p>
+              report,
+              class: "text-blue-600 hover:text-blue-800",
+              data: { turbo_frame: "_top" } %>
+        </div>
       </div>
     <% end %>
   </div>
 
-  <%= paginate @reports %>
+  <div class="mt-8">
+    <%= paginate @reports %>
+  </div>
 <% end %>
 
-<nav class="page-nav">
-  <%= link_to t('views.common.new', name: Report.model_name.human.downcase), new_report_path %>
+<nav class="mt-8">
+  <%= link_to t('views.common.new', name: Report.model_name.human.downcase),
+      new_report_path,
+      class: "inline-flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
 </nav>

@@ -1,7 +1,17 @@
-<h1><%= t('views.common.title_new', name: Report.model_name.human.downcase) %></h1>
+<div class="min-h-screen">
+ <div class="max-w-3xl w-full mx-auto">
+   <div class="flex justify-between items-center mb-8">
+     <h1 class="text-3xl font-bold">
+       <%= t('views.common.title_new', name: Report.model_name.human.downcase) %>
+     </h1>
+   </div>
 
-<%= render "form", report: @report %>
+   <%= render "form", report: @report %>
 
-<nav class="page-nav">
-  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
-</nav>
+   <nav class="flex flex-col md:flex-row gap-4 justify-end mt-8">
+     <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)),
+         reports_path,
+         class: "w-full md:w-auto px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-all duration-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md text-center" %>
+   </nav>
+ </div>
+</div>

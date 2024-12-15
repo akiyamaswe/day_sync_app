@@ -10,7 +10,7 @@
     <ul class="space-y-2">
       <% mentioned_reports.each do |mentioned_report| %>
         <li class="transition duration-200">
-          <%= link_to mentioned_report.title, mentioned_report, 
+          <%= link_to mentioned_report.title, mentioned_report,
               class: "block p-3 rounded-md hover:bg-gray-50 text-gray-700 hover:text-blue-600 border border-gray-100 hover:border-blue-100" %>
         </li>
       <% end %>

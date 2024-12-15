@@ -20,7 +20,7 @@
       <%= link_to t('views.common.edit', name: Report.model_name.human.downcase),
           edit_report_path(@report),
           class: "w-full md:w-auto px-6 py-2 bg-blue-600 text-white text-center rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
-      
+
       <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase),
           @report,
           method: :delete,

@@ -1,45 +1,62 @@
-<div class="search-panel">
-  <div class="search-compact">
-    <%= search_form_for @q, html: { data: { turbo_frame: "reports-results" } } do |f| %>
-      <div class="search-grid">
-        <div class="search-top-fields">
-          <div class="search-field">
-            <%= f.label :user_id_eq, User.model_name.human %>
+<div class="search-panel w-full">
+  <div class="search-compact bg-white rounded-lg shadow-lg p-6 w-full">
+    <%= search_form_for @q,
+        html: {
+          class: "w-full",
+          data: {
+            turbo_frame: "reports-results",
+            turbo: true
+          }
+        } do |f| %>
+      <div class="w-full">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+          <div class="search-field md:col-span-4 w-full">
+            <%= f.label :user_id_eq, User.model_name.human, class: "block text-sm font-medium text-gray-700" %>
             <%= f.collection_select :user_id_eq,
                 User.all,
                 :id,
                 ->(user) { user.name.presence || user.email },
-                { include_blank: t('views.common.please_select') } %>
+                { include_blank: t('views.common.please_select') },
+                class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" %>
           </div>
 
-          <div class="search-field">
-            <%= f.label :title_cont, Report.human_attribute_name(:title) %>
-            <%= f.text_field :title_cont %>
+          <div class="search-field md:col-span-4 w-full">
+            <%= f.label :title_cont, Report.human_attribute_name(:title), class: "block text-sm font-medium text-gray-700" %>
+            <%= f.text_field :title_cont,
+                class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm",
+                placeholder: "タイトルを入力" %>
           </div>
 
-          <div class="search-field">
-            <%= f.label :content_cont, Report.human_attribute_name(:content) %>
-            <%= f.text_field :content_cont %>
+          <div class="search-field md:col-span-4 w-full">
+            <%= f.label :content_cont, Report.human_attribute_name(:content), class: "block text-sm font-medium text-gray-700" %>
+            <%= f.text_field :content_cont,
+                class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm",
+                placeholder: "内容を入力" %>
+          </div>
+
+          <div class="search-field md:col-span-4 w-full">
+            <%= f.label :created_at_gteq, t('views.common.date_range_start'), class: "block text-sm font-medium text-gray-700" %>
+            <%= f.date_field :created_at_gteq,
+                class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" %>
+          </div>
+
+          <div class="search-field md:col-span-4 w-full">
+            <%= f.label :created_at_lteq, t('views.common.date_range_end'), class: "block text-sm font-medium text-gray-700" %>
+            <%= f.date_field :created_at_lteq,
+                class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" %>
           </div>
         </div>
 
-        <div class="search-date-fields">
-          <div class="search-field">
-            <%= f.label :created_at_gteq, t('views.common.date_range_start') %>
-            <%= f.date_field :created_at_gteq %>
-          </div>
+        <div class="flex justify-end space-x-4 mt-6 w-full">
+          <%= f.submit t('views.common.search'),
+              class: "w-full md:w-auto px-6 py-2 bg-blue-600 text-white text-center rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
 
-          <div class="search-field">
-            <%= f.label :created_at_lteq, t('views.common.date_range_end') %>
-            <%= f.date_field :created_at_lteq %>
-          </div>
-        </div>
-
-        <div class="search-actions">
-          <%= f.submit t('views.common.search'), class: 'search-button search-submit' %>
           <%= link_to t('views.common.clear'), reports_path,
-              class: 'search-button search-clear',
-              data: { turbo_frame: "reports-results" } %>
+              class: "w-full md:w-auto px-6 py-2 bg-slate-400 text-white text-center rounded-md hover:bg-slate-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500",
+              data: {
+                turbo_frame: "reports-results",
+                turbo: true
+              } %>
         </div>
       </div>
     <% end %>

@@ -25,5 +25,18 @@ module DaySyncApp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Tokyo'
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if html_tag =~ /<(input|textarea|select)/
+        doc = Nokogiri::HTML::DocumentFragment.parse(html_tag)
+        element = doc.children.first
+        existing_classes = element['class'].to_s.split
+        new_classes = ['border-red-300', 'bg-red-50', 'focus:border-red-500', 'focus:ring-red-200']
+        element['class'] = (existing_classes + new_classes).join(' ')
+        doc.to_html.html_safe
+      else
+        html_tag.html_safe
+      end
+    end
   end
 end

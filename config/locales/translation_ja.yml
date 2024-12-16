@@ -29,7 +29,7 @@ ja:
 
       comment:
         commentable_type: コメント可能な型  #g
-        content: コンテンツ  #g
+        content: コメント  #g
         user: :activerecord.models.user  #g
 
   views:

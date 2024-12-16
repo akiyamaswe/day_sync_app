@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
     if @report.save_with_mentions
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
-      handle_save_error(:new)
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
     if @report.save_with_mentions
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      handle_save_error(:edit)
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,11 +42,6 @@ class ReportsController < ApplicationController
   end
 
   private
-
-  def handle_save_error(template)
-    flash.now[:alert]
-    render template
-  end
 
   def handle_record_not_found
     flash[:alert] = t('views.mention.not_found')

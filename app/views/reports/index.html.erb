@@ -3,10 +3,16 @@
 </h1>
 
 <div class="search-panel-container mb-8">
-  <button type="button" class="search-panel-toggle flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm mb-4">
-    <span class="toggle-icon transition-transform duration-200">▶</span>
-    <%= t('views.common.detailed_search') %>
-  </button>
+  <div class="flex items-center gap-4 mb-4">
+    <button type="button" class="search-panel-toggle flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm">
+      <span class="toggle-icon transition-transform duration-200">▶</span>
+      <%= t('views.common.detailed_search') %>
+    </button>
+
+    <%= link_to t('views.common.new', name: Report.model_name.human.downcase),
+        new_report_path,
+        class: "inline-flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
+  </div>
 
   <%= render 'search_panel' %>
 </div>
@@ -30,9 +36,3 @@
     <%= paginate @reports %>
   </div>
 <% end %>
-
-<nav class="mt-8">
-  <%= link_to t('views.common.new', name: Report.model_name.human.downcase),
-      new_report_path,
-      class: "inline-flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md shadow-sm" %>
-</nav>

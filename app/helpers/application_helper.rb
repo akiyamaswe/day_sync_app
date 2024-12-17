@@ -12,4 +12,9 @@ module ApplicationHelper
   def format_content(content)
     safe_join(content.split("\n"), tag.br)
   end
+
+  def prose_classes(action = action_name)
+    base_classes = 'prose prose-slate max-w-none'
+    action == 'index' ? "#{base_classes} index-prose" : base_classes
+  end
 end

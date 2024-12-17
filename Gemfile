@@ -83,4 +83,5 @@ gem 'kaminari'
 gem 'ransack'
 gem 'rinku'
 
+gem 'commonmarker', '~> 0.23.10'
 gem 'tailwindcss-rails', '~> 3.0'

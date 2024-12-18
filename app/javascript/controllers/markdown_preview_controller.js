@@ -40,26 +40,35 @@ export default class extends Controller {
         return src.match(/^:::details/)?.index;
       },
       tokenizer(src) {
-        const match = src.match(
-          /^:::details([^\n]+)\n((?:(?!:::)[\s\S])*)\n:::/
-        );
+        const regex = /^:::details(?:[ ](.*?))?\n([\s\S]*?)\n:::/;
+        const match = src.match(regex);
+
         if (match) {
           return {
             type: "details",
             raw: match[0],
-            title: match[1].trim(),
+            title: match[1] ? match[1].trim() : "",
+
             content: match[2].trim(),
           };
         }
+        return undefined;
       },
       renderer(token) {
-        const content = marked.parse(token.content);
+        const parsedContent = marked.parse(token.content, { breaks: true });
+
+        const summary = token.title
+          ? `<summary>${token.title}</summary>`
+          : "<summary></summary>";
+
         return `
-          <details class="task-details">
-            <summary>${token.title}</summary>
-            <div>${content}</div>
+          <details class="task-details" data-details-state>
+            ${summary}
+            <div class="details-content">
+              ${parsedContent}
+            </div>
           </details>
-        `;
+        `.trim();
       },
     };
 
@@ -71,17 +80,51 @@ export default class extends Controller {
   }
 
   connect() {
-    this.inputTarget.addEventListener("input", this.preview.bind(this));
+    this.boundPreview = this.preview.bind(this);
+    this.inputTarget.addEventListener("input", this.boundPreview);
     this.preview();
+    this.setupDetailsListeners();
   }
 
   disconnect() {
-    this.inputTarget.removeEventListener("input", this.preview.bind(this));
+    this.inputTarget.removeEventListener("input", this.boundPreview);
   }
 
   preview() {
+    const detailsStates = this.saveDetailsStates();
+
     const markdown = this.inputTarget.value;
     const html = marked(markdown);
     this.previewTarget.innerHTML = html;
+
+    this.restoreDetailsStates(detailsStates);
+
+    this.setupDetailsListeners();
+  }
+
+  saveDetailsStates() {
+    return Array.from(this.previewTarget.querySelectorAll("details")).map(
+      (details, index) => ({
+        index,
+        open: details.open,
+      })
+    );
+  }
+
+  restoreDetailsStates(states) {
+    const details = this.previewTarget.querySelectorAll("details");
+    states.forEach((state) => {
+      if (details[state.index]) {
+        details[state.index].open = state.open;
+      }
+    });
+  }
+
+  setupDetailsListeners() {
+    this.previewTarget.querySelectorAll("details").forEach((details) => {
+      details.addEventListener("toggle", (event) => {
+        event.stopPropagation();
+      });
+    });
   }
 }

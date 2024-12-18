@@ -1,3 +1,5 @@
 <li class="page-item">
-  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, remote: remote, class: 'page-link' %>
+  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, 
+      remote: remote, 
+      class: 'relative inline-flex items-center rounded-r-lg px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200' %>
 </li>

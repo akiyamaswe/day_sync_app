@@ -1,7 +1,7 @@
 <%= paginator.render do %>
-  <div class="pagination-container">
+  <div class="pagination-container flex justify-center my-8">
     <nav>
-      <ul class="pagination d-flex flex-row">
+      <ul class="pagination inline-flex rounded-lg shadow-sm -space-x-px">
         <%= first_page_tag unless current_page.first? %>
         <%= prev_page_tag unless current_page.first? %>
         <% each_page do |page| %>

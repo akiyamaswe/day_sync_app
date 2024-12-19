@@ -1,9 +1,15 @@
 <% if page.current? %>
   <li class="page-item active">
-    <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link' %>
+    <%= content_tag :a, page, 
+        data: { remote: remote }, 
+        rel: page.rel, 
+        class: "relative inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 transition-colors duration-200 #{page.to_i == 1 ? 'rounded-l-lg' : ''} #{page.to_i == 7 ? 'rounded-r-lg' : ''}" %>
   </li>
 <% else %>
   <li class="page-item">
-    <%= link_to page, url, remote: remote, rel: page.rel, class: 'page-link' %>
+    <%= link_to page, url, 
+        remote: remote, 
+        rel: page.rel, 
+        class: "relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 #{page.to_i == 1 ? 'rounded-l-lg' : ''} #{page.to_i == 7 ? 'rounded-r-lg' : ''}" %>
   </li>
 <% end %>

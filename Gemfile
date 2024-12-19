@@ -81,7 +81,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
 gem 'ransack'
+gem 'resend', '~> 0.8.0'
 gem 'rinku'
-
 gem 'commonmarker', '~> 0.23.10'
 gem 'tailwindcss-rails', '~> 3.0'

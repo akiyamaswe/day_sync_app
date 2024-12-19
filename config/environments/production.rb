@@ -73,9 +73,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  # Resendの設定
+  config.action_mailer.delivery_method = :resend
+  config.action_mailer.default_url_options = { host: 'daysync.jp' }
+  config.action_mailer.resend_settings = {
+    api_key: ENV['RESEND_API_KEY']
+  }
+
+  # メール配信エラーを即座に検知するために true に設定
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

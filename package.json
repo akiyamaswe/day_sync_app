@@ -1,0 +1,23 @@
+{
+  "name": "day_sync_app",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "email": "email dev -d app/javascript/emails -p 3001"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@react-email/components": "^0.0.31",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-email": "^3.0.4"
+  }
+}

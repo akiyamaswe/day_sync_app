@@ -12,36 +12,25 @@ class DeviseMailer < Devise::Mailer
     # JSXテンプレートをHTMLに変換
     reset_url = edit_password_url(@resource, reset_password_token: @token)
     
-    # React Emailのコンポーネントをレンダリング
-    jsx_content = <<~JSX
-      const React = require('react');
-      const { PasswordResetEmail } = require('./app/javascript/emails/password_reset.jsx');
-      const { render } = require('@react-email/render');
-
-      const html = render(React.createElement(PasswordResetEmail, { resetUrl: '#{reset_url}' }));
-      console.log(html);
-    JSX
+    # Node.jsスクリプトを実行してHTMLを生成
+    render_script_path = Rails.root.join('scripts', 'render_email.js')
+    password_reset_path = Rails.root.join('app', 'javascript', 'emails', 'password_reset.jsx')
     
-    # 一時ファイルにJSXを保存
-    require 'tempfile'
-    html_content = nil
+    # スクリプトの実行結果とエラーの両方を取得
+    html_content, error_str, status = Open3.capture3("node", render_script_path.to_s, reset_url.to_s)
     
-    Tempfile.create(['email', '.js']) do |f|
-      f.write(jsx_content)
-      f.flush
-      
-      # Node.jsでJSXをHTMLに変換
-      html_content = `node -e "#{File.read(f.path)}"`
-    end
+    # エラーがある場合はログに出力
+    Rails.logger.error("Email render error: #{error_str}") unless error_str.empty?
+    
+    raise "Failed to generate HTML: #{error_str}" if html_content.blank?
     
     # Resendでメール送信
     mail(
+      from: ENV['RESEND_FROM_EMAIL'],
       to: record.email,
       subject: I18n.t('devise.mailer.reset_password_instructions.subject'),
-      html_body: html_content,
-      from: 'info@daysync.jp'
-    ) do |format|
-      format.html { render html: html_content.html_safe }
-    end
+      body: html_content,
+      content_type: 'text/html'
+    )
   end
 end

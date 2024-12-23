@@ -77,7 +77,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :resend
   config.action_mailer.default_url_options = { host: 'daysync.jp' }
   config.action_mailer.resend_settings = {
-    api_key: ENV['RESEND_API_KEY']
+    api_key: ENV['RESEND_API_KEY'],
+    from: ENV['RESEND_FROM_EMAIL']
   }
 
   # メール配信エラーを即座に検知するために true に設定

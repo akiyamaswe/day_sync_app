@@ -6,12 +6,33 @@ class DeviseMailer < Devise::Mailer
     @token = token
     @resource = record
     
-    # JSXテンプレートをHTMLに変換
-    reset_url = edit_password_url(@resource, reset_password_token: @token)
-    html_content = `npm run email -- --preview #{reset_url}`
-    
     # APIキーの存在確認
     raise "Resend API key is not set" if ENV['RESEND_API_KEY'].blank?
+    
+    # JSXテンプレートをHTMLに変換
+    reset_url = edit_password_url(@resource, reset_password_token: @token)
+    
+    # React Emailのコンポーネントをレンダリング
+    jsx_content = <<~JSX
+      const React = require('react');
+      const { PasswordResetEmail } = require('./app/javascript/emails/password_reset.jsx');
+      const { render } = require('@react-email/render');
+
+      const html = render(React.createElement(PasswordResetEmail, { resetUrl: '#{reset_url}' }));
+      console.log(html);
+    JSX
+    
+    # 一時ファイルにJSXを保存
+    require 'tempfile'
+    html_content = nil
+    
+    Tempfile.create(['email', '.js']) do |f|
+      f.write(jsx_content)
+      f.flush
+      
+      # Node.jsでJSXをHTMLに変換
+      html_content = `node -e "#{File.read(f.path)}"`
+    end
     
     # Resendでメール送信
     mail(

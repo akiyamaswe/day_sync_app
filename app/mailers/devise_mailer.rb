@@ -6,25 +6,19 @@ class DeviseMailer < Devise::Mailer
     @token = token
     @resource = record
     
-    # APIキーの存在確認
     raise "Resend API key is not set" if ENV['RESEND_API_KEY'].blank?
     
-    # JSXテンプレートをHTMLに変換
     reset_url = edit_password_url(@resource, reset_password_token: @token)
-    
-    # Node.jsスクリプトを実行してHTMLを生成
     render_script_path = Rails.root.join('scripts', 'render_email.js')
-    password_reset_path = Rails.root.join('app', 'javascript', 'emails', 'password_reset.jsx')
     
-    # スクリプトの実行結果とエラーの両方を取得
-    html_content, error_str, status = Open3.capture3("node", render_script_path.to_s, reset_url.to_s)
+    # 標準出力とエラー出力を分けて取得
+    html_content, error_output, status = Open3.capture3("node", render_script_path.to_s, reset_url.to_s)
     
-    # エラーがある場合はログに出力
-    Rails.logger.error("Email render error: #{error_str}") unless error_str.empty?
+    # エラー出力があればログに記録
+    Rails.logger.error("Email render error: #{error_output}") unless error_output.empty?
     
-    raise "Failed to generate HTML: #{error_str}" if html_content.blank?
+    raise "Failed to generate HTML: #{error_output}" if html_content.blank?
     
-    # Resendでメール送信
     mail(
       from: ENV['RESEND_FROM_EMAIL'],
       to: record.email,

@@ -10,21 +10,21 @@ const resetUrl = process.argv[2];
 
 function renderEmail() {
   try {
-    console.log("Starting email render...");
+    console.error("Starting email render...");
     const {
       PasswordResetEmail,
     } = require("../app/javascript/emails/password_reset.jsx");
 
-    console.log("Component loaded:", PasswordResetEmail);
+    console.error("Component loaded successfully");
     const element = React.createElement(PasswordResetEmail, { resetUrl });
-    console.log("Element created:", element);
+    console.error("Element created successfully");
 
     const html = renderToString(element);
-    console.log("HTML generated:", html);
+    console.error("HTML generated successfully");
 
     process.stdout.write(html);
   } catch (error) {
-    console.error("Detailed error:", error);
+    console.error("Error:", error);
     process.exit(1);
   }
 }

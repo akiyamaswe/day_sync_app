@@ -8,9 +8,9 @@
 ## 🚀 開発の背景
 DaySyncAppは、日報管理、ユーザー管理、コメント機能、メンション機能などを備えた、チームでの情報共有を促進するアプリケーションです。社内での業務報告ツールの不在により、重要な情報や知見が適切に共有・蓄積されていないという課題に直面していました。この問題を解決するため、チームメンバー全員が簡単に日報を作成・共有し、円滑なコミュニケーションを取れるプラットフォームとしてDaySyncAppを開発しました。
 
-<div style="text-align: center;">
+<p align="center">
   <img src="./images/top_page.png" alt="DaySyncApp トップ画面" width="600">
-</div>
+</p>
 
 ## 🛠️ インフラストラクチャ
 
@@ -71,13 +71,13 @@ DaySyncAppは、日報管理、ユーザー管理、コメント機能、メン�
     *   日報内容でのURLによるリンク遷移機能
         * `day_sync_app/app/views/reports/show.html.erb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="./images/markdown_page.png" alt="DaySyncApp マークダウンデモ" width="600">
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3hrdmNpbGpyMXVjcDducnFmMnJ3bGZnMTM1d21yeWJoY2ZheGR3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VQHy56bGQLRPlhJXvQ/giphy.gif" alt="DaySyncApp リンク遷移デモ" width="600">
-</div>
+</p>
 
 *   **ユーザー管理**:
     *   新規登録、ログイン、ログアウト機能 (Deviseを使用)
@@ -87,18 +87,18 @@ DaySyncAppは、日報管理、ユーザー管理、コメント機能、メン�
     *   日報へのコメント投稿・削除機能
         * `day_sync_app/app/views/shared/comments.html.erb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGgwZG1memdvemcwOXI1ZHd2eTk0enJ3b3hsanpra2RhZmg3OGI0ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CorL5h8iE1iCupxNoS/giphy.gif" alt="DaySyncApp コメント機能デモ" width="600">
-</div>
+</p>
 
 *   [**メンション機能**:](https://daysync.jp/reports/16)
     *   日報内で他の日報を参照するメンション機能
         * `day_sync_app/app/models/report.rb`
         * `day_sync_app/app/views/reports/_mentions.html.erb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDFtY3YwMjE5aTBsOWx6bHZ1cGJ5ZWZocWM1bzl2ZHl4MHhmOXZiZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ibClzXESx525Pg1eMl/giphy.gif" alt="DaySyncApp 参照機能デモ" width="600">
-</div>
+</p>
 
 
 ## 💪 工夫した点
@@ -112,31 +112,31 @@ DaySyncAppは、日報管理、ユーザー管理、コメント機能、メン�
         * `day_sync_app/config/application.rb`
         * `day_sync_app/app/views/shared/_validation_errors.html.erb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWF4dXlwY291d25wdmYzMGh6emZ5OG1qdXRwZXU5NXRtMmZ1cmU4cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w5NIqxQENwCKbkrfTi/giphy.gif" alt="DaySyncApp 日報バリデーションデモ" width="600">
-</div>
+</p>
 
 *   [**メール送信機能**:](https://daysync.jp/reports/10)
       * Resend APIを利用し、パスワードリセットのメール送信機能を実装しました。
       * React Emailを使用することで効率的なメールテンプレートの作成を可能にしました。
         * `day_sync_app/app/mailers/devise_mailer.rb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="./images/react_email.png" alt="DaySyncApp react_emailデモ" width="600">
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
   <img src="./images/resend.png" alt="DaySyncApp resendデモ" width="600">
-</div>
+</p>
 
 *   [**検索機能**:](https://daysync.jp/reports/15)
       * Ransackを使用し、日報のタイトルや内容による検索機能に加えて、ユーザーによる検索も実装しました。
       * turbo_frameを活用し、検索結果をページ遷移せずに表示することで、ユーザーにとって快適な操作感を実現しました。
         * `day_sync_app/app/models/report.rb`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGk5eTdza2g4YmlyNGFoMTZ2NXFxdXh1Mms0ZGF3aXdrNHoyNGx4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ffgWqv38EWeOSdO7Wb/giphy.gif" alt="DaySyncApp 検索デモ" width="600">
-</div>
+</p>
 
 *   [**マークダウン機能**:](https://daysync.jp/reports/11)
       * CommonMarkerとmarkedライブラリを活用し、安全で高機能なマークダウンパーサーを実装しました。
@@ -146,9 +146,9 @@ DaySyncAppは、日報管理、ユーザー管理、コメント機能、メン�
         * `day_sync_app/app/helpers/markdown_helper.rb`
         * `day_sync_app/app/javascript/controllers/markdown_preview_controller.js`
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM202bzNjbm0zcGkwMWQ1ZXZ4dGxkdmsyZjhxZWM0N3N0Ym1xNnk5dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XeFSlE3yqoQsVGGMGx/giphy.gif" alt="DaySyncApp 日報プレビューデモ" width="600">
-</div>
+</p>
 
 ## 🌱 今後の展望
 
@@ -157,9 +157,9 @@ DaySyncAppは、日報管理、ユーザー管理、コメント機能、メン�
 *   **UI/UXの継続的な改善**: ユーザーからのフィードバックを元に、Reactを使用してより使いやすいインターフェースを目指す。
 
 ##   📄ER図
-<div style="text-align: center;">
+<p align="center">
   <img src="./images/Untitleddiagram-2024-12-26-025534.png" alt="DaySyncApp ER図" width="350">
-</div>
+</p>
 
 ## ✉️ お問い合わせ
 
